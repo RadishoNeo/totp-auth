@@ -43,8 +43,9 @@ export class TOTP extends HOTP {
     if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
       crypto.getRandomValues(randomBytes);
     } else {
-      const { randomBytes: nodeRandom } = require('crypto');
-      nodeRandom(randomBytes);
+      const { randomBytes } = require('crypto');
+      const random = randomBytes(bytes);
+      random.copy(randomBytes);
     }
     return Base32.encode(randomBytes);
   }
