@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Build output (already excluded by "files" field in package.json)
+dist/
+
+# Source files (only compiled JS is published)
+src/
+tests/
+*.test.ts
+*.spec.ts
+
+# Configuration files
+*.config.js
+*.config.ts
+tsconfig.json
+rollup.config.js
+jest.config.js
+
+# Development
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+
+# Version control
+.git
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Lock files (not needed for published package)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# CI/CD
+.github/
