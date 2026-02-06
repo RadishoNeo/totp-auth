@@ -1,10 +1,10 @@
-const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
 
 export class Base32 {
   static encode(data: Uint8Array): string {
     let bits = 0;
     let value = 0;
-    let output = '';
+    let output = "";
 
     for (let i = 0; i < data.length; i++) {
       value = (value << 8) | data[i];
@@ -21,22 +21,22 @@ export class Base32 {
     }
 
     while (output.length % 8 !== 0) {
-      output += '=';
+      output += "=";
     }
 
     return output;
   }
 
   static decode(encoded: string): Uint8Array {
-    const cleaned = encoded.replace(/=+$/, '').toUpperCase();
+    const cleaned = encoded.replace(/=+$/, "").toUpperCase();
     let bits = 0;
     let value = 0;
     const output: number[] = [];
 
     for (let i = 0; i < cleaned.length; i++) {
       const val = ALPHABET.indexOf(cleaned[i]);
-      if (val === -1) throw new Error('Invalid Base32 character');
-      
+      if (val === -1) throw new Error("Invalid Base32 character");
+
       value = (value << 5) | val;
       bits += 5;
 

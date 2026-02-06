@@ -25,30 +25,30 @@ npm install @krmeow/totp-auth
 ## 快速开始
 
 ```typescript
-import { TOTP } from '@krmeow/totp-auth';
+import { TOTP } from "@krmeow/totp-auth";
 
 // 1. 生成密钥
 const secret = TOTP.generateSecret();
-console.log('Secret:', secret);
+console.log("Secret:", secret);
 
 // 2. 创建 TOTP 实例（使用 Base32 解码后的密钥）
 const totp = new TOTP(TOTP.base32Decode(secret));
 
 // 3. 生成验证码
 const code = totp.generate();
-console.log('Code:', code);
+console.log("Code:", code);
 
 // 4. 验证（支持时间窗口容错）
 const isValid = totp.verify(code, { window: 1 });
-console.log('Valid:', isValid);
+console.log("Valid:", isValid);
 
 // 5. 获取验证码剩余有效时间
 const remaining = totp.getRemainingSeconds();
-console.log('Remaining seconds:', remaining);
+console.log("Remaining seconds:", remaining);
 
 // 6. 生成 Google Authenticator 扫码 URI
-const uri = TOTP.generateAuthURI('user@example.com', secret, 'MyApp');
-console.log('Auth URI:', uri);
+const uri = TOTP.generateAuthURI("user@example.com", secret, "MyApp");
+console.log("Auth URI:", uri);
 ```
 
 ## API
@@ -149,13 +149,13 @@ Base32 解码。
 ## 与 Google Authenticator 配合使用
 
 ```typescript
-import { TOTP } from '@krmeow/totp-auth';
+import { TOTP } from "@krmeow/totp-auth";
 
 // 生成密钥
 const secret = TOTP.generateSecret();
 
 // 生成扫码 URI
-const uri = TOTP.generateAuthURI('user@example.com', secret, 'MyApp');
+const uri = TOTP.generateAuthURI("user@example.com", secret, "MyApp");
 
 // 将 uri 生成二维码，用户扫描后即可在 Google Authenticator 中使用
 ```
@@ -164,10 +164,10 @@ const uri = TOTP.generateAuthURI('user@example.com', secret, 'MyApp');
 
 ```javascript
 // ESM
-import { TOTP } from '@krmeow/totp-auth';
+import { TOTP } from "@krmeow/totp-auth";
 
 // 或使用 CDN
-import { TOTP } from 'https://cdn.jsdelivr.net/npm/@krmeow/totp-auth/dist/index.esm.js';
+import { TOTP } from "https://cdn.jsdelivr.net/npm/@krmeow/totp-auth/dist/index.esm.js";
 
 const secret = TOTP.generateSecret();
 const totp = new TOTP(TOTP.base32Decode(secret));
@@ -179,13 +179,13 @@ console.log(code);
 
 本库使用 RFC 6238 标准测试向量验证（使用 8 位验证码）：
 
-| 时间戳 | 预期验证码 |
-|--------|-----------|
-| 59 秒 | 94287082 |
-| 1111111109 秒 | 07081804 |
-| 1111111111 秒 | 14050471 |
-| 1234567890 秒 | 89005924 |
-| 2000000000 秒 | 69279037 |
+| 时间戳        | 预期验证码 |
+| ------------- | ---------- |
+| 59 秒         | 94287082   |
+| 1111111109 秒 | 07081804   |
+| 1111111111 秒 | 14050471   |
+| 1234567890 秒 | 89005924   |
+| 2000000000 秒 | 69279037   |
 
 > **注意**：RFC 6238 标准测试向量使用 8 位验证码。实际使用中（如 Google Authenticator），默认使用 **6 位验证码**，这也是本库的默认值。
 
