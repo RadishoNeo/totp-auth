@@ -1,5 +1,5 @@
 {
-  "name": "totp-auth",
+  "name": "@krmeow/totp-auth",
   "version": "1.0.0",
   "description": "Time-based One-Time Password (TOTP) implementation for Node.js and browsers",
   "type": "module",

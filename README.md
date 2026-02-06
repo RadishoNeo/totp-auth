@@ -1,8 +1,8 @@
-# totp-auth
+# @krmeow/totp-auth
 
-[![npm version](https://badge.fury.io/js/totp-auth.svg)](https://www.npmjs.com/package/totp-auth)
+[![npm version](https://badge.fury.io/js/@krmeow/totp-auth.svg)](https://www.npmjs.com/package/@krmeow/totp-auth)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://github.com/krmeow/totp-auth/actions/workflows/ci.yml/badge.svg)](https://github.com/krmeow/totp-auth/actions)
+[![Tests](https://github.com/krmeow/@krmeow/totp-auth/actions/workflows/ci.yml/badge.svg)](https://github.com/krmeow/@krmeow/totp-auth/actions)
 
 基于 RFC 6238/4226 标准的 TOTP/HOTP 实现，兼容 Google Authenticator。
 
@@ -19,13 +19,13 @@
 ## 安装
 
 ```bash
-npm install totp-auth
+npm install @krmeow/totp-auth
 ```
 
 ## 快速开始
 
 ```typescript
-import { TOTP } from 'totp-auth';
+import { TOTP } from '@krmeow/totp-auth';
 
 // 1. 生成密钥
 const secret = TOTP.generateSecret();
@@ -149,7 +149,7 @@ Base32 解码。
 ## 与 Google Authenticator 配合使用
 
 ```typescript
-import { TOTP } from 'totp-auth';
+import { TOTP } from '@krmeow/totp-auth';
 
 // 生成密钥
 const secret = TOTP.generateSecret();
@@ -164,10 +164,10 @@ const uri = TOTP.generateAuthURI('user@example.com', secret, 'MyApp');
 
 ```javascript
 // ESM
-import { TOTP } from 'totp-auth';
+import { TOTP } from '@krmeow/totp-auth';
 
 // 或使用 CDN
-import { TOTP } from 'https://cdn.jsdelivr.net/npm/totp-auth/dist/index.esm.js';
+import { TOTP } from 'https://cdn.jsdelivr.net/npm/@krmeow/totp-auth/dist/index.esm.js';
 
 const secret = TOTP.generateSecret();
 const totp = new TOTP(TOTP.base32Decode(secret));
